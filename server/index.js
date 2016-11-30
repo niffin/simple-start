@@ -1,18 +1,19 @@
-const path       = require('path'),
-      express    = require('express'),
-      app        = express(),
-      isDevEnv   = process.env.NODE_ENV === 'development',
-      bundlePath = isDevEnv ? 'http://localhost:3001' : 'dist';
+const path           = require('path'),
+      express        = require('express'),
+      app            = express(),
+      config         = require('../config/default'),
+      bundle         = config.webpack.bundle,
+      portNumber     = config.server.port;
 
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
+app.set('view engine', 'jade');
 
 app.use(express.static('client'));
 
 app.get('/', function (req, res) {
-  res.render('index', { bundlePath });
+  res.render('index', { bundle });
 });
 
-console.log('restart', 'environment: ', process.env.NODE_ENV);
+console.log('server is running on port ' + portNumber); // eslint-disable-line no-console
 
-app.listen(3000);
+app.listen(portNumber);
