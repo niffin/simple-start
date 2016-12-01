@@ -4,16 +4,13 @@ const GET_SIMPSONS_GIFS = 'GET_SIMPSONS_GIFS';
 const SET_SIMPSONS_GIFS = 'SET_SIMPSONS_GIFS';
 
 export function getSimpsonsGifs () {
-  return dispatch => {
+  return async dispatch => {
     dispatch({ type : GET_SIMPSONS_GIFS });
 
-    fetchSimpsonsGifs()
-      .then(gifUrls => dispatch(setSimpsonsGIFS(gifUrls)));
-  };
-}
+    const gifUrls = await fetchSimpsonsGifs();
 
-export function setSimpsonsGIFS (videoUrls) {
-  return { type : SET_SIMPSONS_GIFS, videoUrls };
+    dispatch({ type : SET_SIMPSONS_GIFS, gifUrls });
+  };
 }
 
 export const initialState = {
@@ -27,7 +24,7 @@ export default function (state = initialState, action) {
     case SET_SIMPSONS_GIFS :
       return {
         ...state,
-        gifUrls    : action.videoUrls,
+        gifUrls    : action.gifUrls,
         isFetching : false
       };
 

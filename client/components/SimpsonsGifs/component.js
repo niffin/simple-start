@@ -17,7 +17,9 @@ class component extends Component {
     return (
       <div style={ styles.wrapper }>
         <button onClick={ getGifUrls }>Get URLS</button>
+
         { isFetching && <div>Fetching URLS....</div> }
+
         { simpsonsGifUrls.map(url => <div key={ url }><img src={ url } /></div>) }
       </div>
     );
