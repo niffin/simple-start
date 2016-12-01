@@ -25,7 +25,8 @@ module.exports = {
   },
   resolve : {
     alias : {
-      'components' : __dirname + '/components'
+      components : __dirname + '/components',
+      state      : __dirname + '/state'
     }
   },
   plugins: isDevelopment                       ?
