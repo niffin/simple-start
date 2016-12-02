@@ -4,6 +4,16 @@
     "react"
   ],
   "plugins" : [
-    "transform-object-rest-spread"
+    "transform-object-rest-spread",
+    [
+      "module-resolver",
+      {
+        "root"  : ["./client/"],
+        "alias" : {
+          "components" : "./components",
+          "state"      : "./state"
+        }
+      }
+    ]
   ]
 }

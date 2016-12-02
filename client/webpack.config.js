@@ -3,12 +3,12 @@ const webpack            = require('webpack'),
       config             = require('../config/default'),
       isDevelopment      = process.env.NODE_ENV === 'development';
 
-const { bundleFileName, publicPath, devEntry } = config.webpack;
+const { bundleFileName, publicPath, entry } = config.webpack;
 
 module.exports = {
+  entry,
   context : __dirname,
   devtool : isDevelopment && 'source-map',
-  entry   : isDevelopment ? devEntry.concat(path.join(__dirname, './index.js')) : './index.js',
   output  : {
     publicPath,
     path     : path.join(__dirname, './dist/'),
@@ -22,12 +22,6 @@ module.exports = {
         loaders : ['react-hot', 'babel']
       }
     ]
-  },
-  resolve : {
-    alias : {
-      components : __dirname + '/components',
-      state      : __dirname + '/state'
-    }
   },
   plugins: isDevelopment                       ?
   [ new webpack.HotModuleReplacementPlugin() ] :

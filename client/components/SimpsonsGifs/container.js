@@ -2,7 +2,8 @@ import { connect } from 'react-redux';
 import component from './component';
 import { getSimpsonsGifs } from 'state/simpsonsGifs';
 
-function mapStateToProps (state) {
+export function mapStateToProps (state) {
+
   const { simpsonsGifs } = state,
         { gifUrls, isFetching } = simpsonsGifs;
 

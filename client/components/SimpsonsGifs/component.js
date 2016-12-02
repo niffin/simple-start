@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 
 const propTypes = {
   isFetching      : PropTypes.bool,
@@ -6,24 +6,16 @@ const propTypes = {
   simpsonsGifUrls : PropTypes.array
 };
 
-class component extends Component {
-  render () {
-    const {
-      isFetching,
-      getGifUrls,
-      simpsonsGifUrls
-    } = this.props;
+export default function SimpsonsGifs ({isFetching, getGifUrls, simpsonsGifUrls = []}) {
+  return (
+    <div style={ styles.wrapper }>
+      <button onClick={ getGifUrls }>Get URLS</button>
 
-    return (
-      <div style={ styles.wrapper }>
-        <button onClick={ getGifUrls }>Get URLS</button>
+      { isFetching && <div className="loading-message">Fetching URLS....</div> }
 
-        { isFetching && <div>Fetching URLS....</div> }
-
-        { simpsonsGifUrls.map(url => <div key={ url }><img src={ url } /></div>) }
-      </div>
-    );
-  }
+      { simpsonsGifUrls.map(url => <div key={ url }><img src={ url } /></div>) }
+    </div>
+  );
 }
 
 const styles = {
@@ -32,6 +24,4 @@ const styles = {
   }
 };
 
-component.propTypes = propTypes;
-
-export default component;
+SimpsonsGifs.propTypes = propTypes;
