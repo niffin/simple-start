@@ -8,4 +8,14 @@ starts hot reloading dev server
 packages all javascript into `/client/dist/bundle.js`
 
 ##### specify build number through CLI : `npm run prod --build=123`
-will create `bundle.build=123.js`
+will create `/client/dist/bundle.build=123.js`
+
+##### libraries
+- react
+- redux
+- normalizr
+- jest
+- enzyme
+
+##### unorthodox/less-than-obvious choices
+- manage aliases in `config/.babelrc` through `babel-plugin-module-resolver` rather than webpack -- *avoids having to duplicate them for jest*.

@@ -8,7 +8,7 @@ const isDevelopment = process.env.NODE_ENV === 'development',
       publicPath     = isDevelopment  ? `http://localhost:${ devServerPort }/`   : './dist/',
       bundleFileName = buildNumber    ? `bundle.build=${     buildNumber   }.js` : 'bundle.js',
       bundle         = (isDevelopment ? `http://localhost:${ devServerPort }/`   : 'dist/') + bundleFileName,
-      entry          = ['babel-polyfill', './index.js'],
+      entry          = ['babel-polyfill', '../client/index.js'],
       devEntry       = [
         'webpack-dev-server/client?http://localhost:' + devServerPort,
         'webpack/hot/only-dev-server'

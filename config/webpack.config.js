@@ -1,6 +1,6 @@
 const webpack            = require('webpack'),
       path               = require('path'),
-      config             = require('../config/default'),
+      config             = require('./default'),
       isDevelopment      = process.env.NODE_ENV === 'development';
 
 const { bundleFileName, publicPath, entry } = config.webpack;
@@ -11,7 +11,7 @@ module.exports = {
   devtool : isDevelopment && 'source-map',
   output  : {
     publicPath,
-    path     : path.join(__dirname, './dist/'),
+    path     : path.join(__dirname, '../client/dist/'),
     filename : bundleFileName
   },
   module: {
@@ -19,7 +19,14 @@ module.exports = {
       {
         test    : /\.js$/,
         exclude : /node_modules/,
-        loaders : ['react-hot', 'babel']
+        loader  : 'babel'
+      }
+    ],
+    postLoaders: [
+      {
+        test    : /\.js$/,
+        exclude : /node_modules/,
+        loader  : 'react-hot'
       }
     ]
   },
@@ -31,6 +38,7 @@ module.exports = {
         NODE_ENV: JSON.stringify('production')
       }
     }),
+    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compress : {
         warnings : false

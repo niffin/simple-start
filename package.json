@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "client:devServer": "export NODE_ENV=development && node ./client/devserver",
-    "client:pack": "export NODE_ENV=production && webpack -p --config ./client/webpack.config.js --progress",
+    "client:devServer": "export NODE_ENV=development && node ./server/devserver",
+    "client:pack": "export NODE_ENV=production && webpack -p --config ./config/webpack.config.js --progress",
     "server:dev": "export NODE_ENV=development && nodemon server -i client",
     "server:prod": "export NODE_ENV=production && node server",
     "start": "npm run client:devServer & npm run server:dev",

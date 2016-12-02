@@ -11,7 +11,8 @@
         "root"  : ["./client/"],
         "alias" : {
           "components" : "./components",
-          "state"      : "./state"
+          "state"      : "./state",
+          "config"     : "./config"
         }
       }
     ]

@@ -1,10 +1,11 @@
 const config            = require('../config/default'),
       webpack           = require('webpack'),
       WebpackDevServer  = require('webpack-dev-server'),
-      webpackConfig     = require('./webpack.config.js'),
+      webpackConfig     = require('../config/webpack.config'),
       devServerConfig   = {
-        hot    : true,
-        noInfo : true
+        hot                : true,
+        noInfo             : true,
+        historyApiFallback : true
       },
       compiler          = webpack(webpackConfig),
       { devServerPort } = config.webpack;
