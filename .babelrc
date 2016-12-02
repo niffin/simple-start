@@ -12,7 +12,7 @@
         "alias" : {
           "components" : "./components",
           "state"      : "./state",
-          "config"     : "./config"
+          "utils"      : "./utils"
         }
       }
     ]

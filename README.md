@@ -19,3 +19,4 @@ will create `/client/dist/bundle.build=123.js`
 
 ##### unorthodox/less-than-obvious choices
 - manage aliases in `config/.babelrc` through `babel-plugin-module-resolver` rather than webpack -- *avoids having to duplicate them for jest*.
+- redux actions and reducers are combined in ['duck'](https://github.com/erikras/ducks-modular-redux)-like bundles in `/client/state`
