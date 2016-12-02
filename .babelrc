@@ -8,7 +8,7 @@
     [
       "module-resolver",
       {
-        "root"  : ["./client/"],
+        "root"  : ["./client"],
         "alias" : {
           "components" : "./components",
           "state"      : "./state",
