@@ -1,9 +1,10 @@
-const path           = require('path'),
-      express        = require('express'),
-      app            = express(),
-      config         = require('../config/default'),
-      bundle         = config.webpack.bundle,
-      portNumber     = config.server.port;
+const path       = require('path'),
+      express    = require('express'),
+      app        = express(),
+      env        = process.env.NODE_ENV || 'development',
+      config     = require('../config/default'),
+      bundle     = config.webpack[env].bundle,
+      portNumber = config.server.port;
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');

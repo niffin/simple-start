@@ -1,17 +1,22 @@
-const webpack            = require('webpack'),
-      path               = require('path'),
-      config             = require('./default'),
-      isDevelopment      = process.env.NODE_ENV === 'development';
+const webpack = require('webpack'),
+      config  = require('./default'),
+      env     = process.env.NODE_ENV || 'development';
 
-const { bundleFileName, publicPath, entry } = config.webpack;
+const {
+  path,
+  bundleFileName,
+  publicPath,
+  entry,
+  devtool
+} = config.webpack[env];
 
 module.exports = {
   entry,
+  devtool,
   context : __dirname,
-  devtool : isDevelopment && 'source-map',
   output  : {
+    path,
     publicPath,
-    path     : path.join(__dirname, '../client/dist/'),
     filename : bundleFileName
   },
   module: {
@@ -30,7 +35,7 @@ module.exports = {
       }
     ]
   },
-  plugins: isDevelopment                       ?
+  plugins: env === 'development'               ?
   [ new webpack.HotModuleReplacementPlugin() ] :
   [
     new webpack.DefinePlugin({
