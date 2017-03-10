@@ -1,18 +1,22 @@
 {
-  "presets" : [
+  "presets": [
     "latest",
     "react"
   ],
-  "plugins" : [
+  "plugins": [
     "transform-object-rest-spread",
     [
       "module-resolver",
       {
-        "root"  : ["./client"],
-        "alias" : {
+        "root": [
+          "./client"
+        ],
+        "alias": {
           "components" : "./components",
           "state"      : "./state",
-          "utils"      : "./utils"
+          "utils"      : "./utils",
+          "constants"  : "./constants",
+          "middleware" : "./middleware"
         }
       }
     ]

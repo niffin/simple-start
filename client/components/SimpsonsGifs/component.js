@@ -11,9 +11,15 @@ export default function SimpsonsGifs ({isFetching, getGifUrls, simpsonsGifUrls =
     <div style={ styles.wrapper }>
       <button onClick={ getGifUrls }>Get URLS</button>
 
-      { isFetching && <div className="loading-message">Fetching URLS....</div> }
+      { isFetching &&
+        <div className="loading-message">Fetching URLS....</div>
+      }
 
-      { simpsonsGifUrls.map(url => <div key={ url }><img src={ url } /></div>) }
+      { simpsonsGifUrls.map(url => (
+        <div key={ url }>
+          <img src={ url } />
+        </div>
+      )) }
     </div>
   );
 }
